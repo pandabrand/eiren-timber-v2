@@ -15,3 +15,9 @@ Timber\Timber::init();
 Timber::$dirname = [ 'templates', 'views' ];
 
 new StarterSite();
+
+add_action( 'wp_enqueue_scripts', 'load_custom_scripts' );
+
+function load_custom_scripts() {
+    wp_enqueue_script( 'app-script', get_template_directory_uri(). '/assets/dist/js/app.js', array(), '1.0.0', true );
+}

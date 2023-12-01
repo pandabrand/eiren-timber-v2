@@ -1,0 +1,34 @@
+.home {
+  background-blend-mode: normal, screen;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+
+  @include media-breakpoint-up(sm) {
+    background-position: center center;
+  }
+
+  .main {
+    padding-top: 3rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    @include media-breakpoint-up(sm) {
+      padding-top: 3rem;
+      padding-right: 15rem;
+      padding-left: 0;
+    }
+
+    @include media-breakpoint-up(md) {
+      padding-top: 6rem;
+      padding-right: 15rem;
+      padding-left: 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-top: 6rem;
+      padding-right: 35rem;
+      padding-left: 0;
+    }
+  }
+}

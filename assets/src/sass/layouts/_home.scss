@@ -1,0 +1,21 @@
+.writing-list {
+  h6 {
+    font-weight: normal;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: auto;
+    }
+
+    a {
+      color: $whitish;
+      text-decoration: underline;
+
+      &:hover,
+      :active {
+        color: darken($whitish, 25%);
+      }
+    }
+  }
+}

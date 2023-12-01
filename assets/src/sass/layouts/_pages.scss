@@ -1,0 +1,125 @@
+@import "home";
+@import "music";
+
+body.page,
+body.archive {
+  .content {
+    @include make-row();
+
+    .main {
+      @include make-col-ready();
+
+      .page-body {
+        @extend .d-flex;
+
+        @include media-breakpoint-up(sm) {
+          flex-direction: column;
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-direction: row-reverse;
+        }
+
+        .page-thumbnail {
+          @include make-col-ready();
+
+          @include media-breakpoint-up(sm) {
+            @include make-col(12);
+
+            margin-bottom: 2rem;
+          }
+
+          @include media-breakpoint-up(lg) {
+            @include make-col(5);
+
+            margin-bottom: 0;
+          }
+        }
+
+        .page-content {
+          @include make-col-ready();
+
+          @include media-breakpoint-up(sm) {
+            @include make-col(12);
+          }
+
+          @include media-breakpoint-up(lg) {
+            @include make-col(7);
+          }
+        }
+      }
+
+      @include media-breakpoint-up(sm) {
+        @include make-col(12);
+      }
+
+      @include media-breakpoint-up(lg) {
+        @include make-col(7);
+      }
+    }
+
+    .sidebar {
+      @include make-col-ready();
+
+      @include media-breakpoint-up(sm) {
+        display: none;
+      }
+
+      @include media-breakpoint-up(lg) {
+        @include make-col(5);
+      }
+
+      padding: 2rem 0;
+    }
+  }
+}
+
+body.page.about {
+  .content {
+    @include make-row();
+
+    .main {
+      @include make-col-ready();
+      @include make-col(12);
+    }
+  }
+}
+
+.main {
+  padding: 2rem 0;
+
+  .page-header {
+    margin-bottom: 5rem;
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+    }
+  }
+
+  article {
+    header {
+      margin-bottom: 2.25rem;
+
+      h2.entry-title {
+        font-weight: bold;
+      }
+
+      time {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+body.blog,
+body.archive {
+  article {
+    display: flex;
+    margin-bottom: 5rem;
+
+    .single-content-thumbnail {
+      margin-right: 2.25rem;
+    }
+  }
+}

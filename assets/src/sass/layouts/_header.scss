@@ -1,0 +1,73 @@
+.banner {
+  background-color: $whitish;
+  color: $dark-gray;
+
+  .container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    .navbar {
+      padding: 0.5rem 0;
+    }
+
+    .brand {
+      @extend .h2;
+      @extend .text-nowrap;
+    }
+
+    .menu-main-container {
+      font-family: $raleway;
+      font-weight: 500;
+      text-transform: uppercase;
+      background-color: rgba($whitish, 0.9);
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: calc(100vh - 89px);
+      padding-top: 30px;
+      margin-left: -15px;
+      margin-right: -15px;
+
+      @include media-breakpoint-up(md) {
+        background-color: inherit;
+        position: inherit;
+        top: inherit;
+        right: inherit;
+        left: inherit;
+        height: auto;
+        padding-top: inherit;
+        margin-left: inherit;
+        margin-right: inherit;
+      }
+
+      .menu-item {
+        padding: 2rem;
+        text-align: center;
+
+        @include media-breakpoint-up(md) {
+          padding: 0 2rem;
+          text-align: inherit;
+        }
+      }
+
+      .current_page_item {
+        text-decoration: underline;
+      }
+    }
+
+    .navbar-toggler {
+      .navbar-toggler-icon {
+        color: $dark-gray;
+      }
+    }
+  }
+}
+
+.banner .nav li {
+  @extend .nav-item;
+}
+
+.banner .nav a {
+  @extend .nav-link;
+}

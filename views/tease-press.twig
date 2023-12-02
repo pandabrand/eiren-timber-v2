@@ -1,0 +1,13 @@
+{% extends "tease.twig" %}
+
+{% block content %}
+	<div class="single-content">
+		<div class="entry-summary">
+			{{ post.content }}
+		</div>
+      <header>
+        <h6 class="entry-title press">{{ post.title }}</h6>
+        {# {% include 'partial/entry-meta.twig' %} #}
+      </header>
+  </div>
+{% endblock %}

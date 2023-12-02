@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+{% block content %}
+	{% if ( post.thumbnail.src ) %}
+	<style type="text/css" id="custom-background-css">
+		body.home {
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%)
+	, url( {{ post.thumbnail.src }} );
+		}
+	</style>
+	{% endif %}
+	<div class="content-wrapper front">
+		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+			<section class="article-content">
+				<h2 class="article-h1">{{post.meta('headline')}}</h2>
+				<div class="article-body">
+					{{post.content}}
+				</div>
+			</section>
+		</article>
+	</div><!-- /content-wrapper -->
+{% endblock %}

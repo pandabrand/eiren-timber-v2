@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="page-header">
+	<h1>{{ post.title }}</h1>
+	</div>
+	<div class="page-body">
+		<div class="page-thumbnail px-4">
+			<img src="{{ post.thumbnail.src('large') }}" class="img-fluid">
+
+		</div>
+		<div class="page-content">
+			{{post.content}}
+		</div>
+	</div>
+	{% for album in post.meta('albums') %}
+		<div class="col-12 col-sm-6 my-4 px-4 album-block">
+			<div class="card">
+				{% if album.album_url %}
+					<a href="{{ album.album_url }}" rel="external">
+						<img class="card-img-top" src="{{ get_image(album.album_image).src('eiren-music_thumbnail') }}" alt="Card image cap">
+					</a>
+				{% else %}
+					<img class="card-img-top" src="{{ get_image(album.album_image).src('eiren-music_thumbnail') }}" alt="Card image cap">
+				{% endif %}
+				<div class="card-body">
+					<p class="card-text">{{ album.album_title }}</p>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

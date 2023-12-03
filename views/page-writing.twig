@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="page-header">
+	<h1>{{ post.title }}</h1>
+	</div>
+	<div class="page-body">
+		<div class="page-thumbnail px-4">
+			<img src="{{ post.thumbnail.src('large') }}" class="img-fluid">
+
+		</div>
+		<div class="page-content">
+			{{post.content}}
+		</div>
+	</div>
+	{% for item_outer in post.meta('writing_group') %}
+      <h3>{{ item_outer.group_name }}</h3>
+
+		{% for item_inner in item_outer.writing_detail %}
+			<div class="writing-list">
+				{% include 'partial/writing-detail.twig' with {detail:item_inner} %}
+			</div>
+		{% endfor %}
+
+	{% endfor %}
+{% endblock %}

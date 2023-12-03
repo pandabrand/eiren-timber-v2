@@ -17,8 +17,7 @@
 $templates = array( 'archive.twig', 'index.twig' );
 
 $context = Timber::context();
-$context['cats'] = get_query_var( 'cat' );
-$context['pressure'] = get_cat_name( get_query_var( 'cat' ) );
+
 $context['title'] = 'Archive';
 if ( is_day() ) {
 	$context['title'] = 'Archive: ' . get_the_date( 'D M Y' );

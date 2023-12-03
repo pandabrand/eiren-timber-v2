@@ -1,6 +1,10 @@
 @import "home";
 @import "music";
 
+body {
+  font-family: $font-family-base;
+}
+
 body.page,
 body.archive {
   .content {

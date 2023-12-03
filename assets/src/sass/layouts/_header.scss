@@ -13,6 +13,7 @@
     .brand {
       @extend .h2;
       @extend .text-nowrap;
+      text-decoration: none;
     }
 
     .menu-main-container {
@@ -49,6 +50,11 @@
           padding: 0 2rem;
           text-align: inherit;
         }
+
+        a {
+          @extend .nav-link;
+          text-decoration: none;
+        }        
       }
 
       .current_page_item {
@@ -70,4 +76,5 @@
 
 .banner .nav a {
   @extend .nav-link;
+  text-decoration: none;
 }

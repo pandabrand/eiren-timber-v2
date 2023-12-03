@@ -19,10 +19,10 @@ $primary: $light-gray;
 //
 // Style anchor elements.
 
-// $link-color:            theme-color("primary");
-// $link-decoration:       none;
-// $link-hover-color:      darken($link-color, 15%);
-// $link-hover-decoration: underline;
+$link-color:            $body-color;
+$link-decoration:       underline;
+$link-hover-color:      darken($link-color, 15%);
+$link-hover-decoration: underline;
 
 // Fonts
 //
@@ -30,7 +30,13 @@ $primary: $light-gray;
 $open-sans: 'Open Sans';
 $raleway:   'Raleway';
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+// $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-sans-serif: Helvetica, Arial, sans-serif;
 $font-family-base:       $open-sans, $font-family-sans-serif;
+$body-font-family: $font-family-base;
 
+$display-font-family:   $raleway;
 $headings-font-family:   $raleway;
+
+// Cards
+$card-bg: $whitish;

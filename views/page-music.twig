@@ -13,6 +13,7 @@
 			{{post.content}}
 		</div>
 	</div>
+	<div class="row">
 	{% for album in post.meta('albums') %}
 		<div class="col-12 col-sm-6 my-4 px-4 album-block">
 			<div class="card">
@@ -29,4 +30,5 @@
 			</div>
 		</div>
 	{% endfor %}
+	</div>
 {% endblock %}

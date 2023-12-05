@@ -2,11 +2,13 @@ name: Theme Build and Deploy
 
 on:
     push:
-        branches:
-            - 'prod'
+        branches: [
+          prod
+        ]
     pull_request:
-        types:
-            - 'closed'
+        branches: [
+          prod
+        ]
         paths-ignore:
             - 'README.md'
             - 'wordpress/**'
@@ -24,17 +26,19 @@ jobs:
         - name: Build
           run: yarn production
 
-        - name: Deploy to server
-          id: deploy
-          uses: Pendect/action-rsyncer@v1.1.0
-          env:
-            DEPLOY_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+        -name: Adding Known Hosts
+         run: |
+          mkdir -p ~/.ssh/
+          ssh-keyscan ${{ secrets.SFTP_URL }} >> ~/.ssh/known_hosts
+
+        - name: Install SSH KEY
+          uses: shimataro/ssh-key-action@v2
           with:
-            flags: '-avzr --delete'
-            options: "--exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes'"
-            ssh_options: ''
-            src: './*'
-            dest: '${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:/home/dh_kkxxmh/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2'
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            known_hosts: ~/.ssh/known_hosts
+
+        - name: Deploy to server with rsync
+          run: rsync -avz --exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' /. ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:/home/dh_kkxxmh/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2
         
         - name: Display status from deploy
           run: echo "{name}={value}" >> $GITHUB_OUTPUT

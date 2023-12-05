@@ -14,11 +14,11 @@
 				<div class="container">
 					<nav class="navbar navbar-expand-md navbar-light">
 						<a class="brand align-self-center" href="{{site.url}}">{{site.name}}</a>
-						<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar_menu_id" aria-controls="navbar_menu_id" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
+						<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_menu_id" aria-controls="navbar_menu_id" aria-expanded="false" aria-label="Toggle navigation">
+							<i class="fa-sharp fa-regular fa-bars"></i>
 						</button>
 						<div id="navbar_menu_id" class="collapse navbar-collapse menu-main-container">
-							{% include "menu.twig" with {'items': menu.get_items} %}
+							{% include "menu.twig" with {'items': primary_menu.get_items} %}
 						</div>
 					</nav><!-- #nav -->
 				</div>

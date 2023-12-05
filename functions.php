@@ -16,6 +16,8 @@ Timber::$dirname = [ 'templates', 'views' ];
 
 new StarterSite();
 
+require __DIR__. '/inc/setup.php';
+
 add_action( 'wp_enqueue_scripts', 'load_custom_scripts' );
 
 function load_custom_scripts() {

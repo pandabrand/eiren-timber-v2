@@ -3,6 +3,9 @@
       <div class="col copyright-info">
         &copy;{{"now"|date('Y')}} Eiren Caffall
       </div>
+      <div class="col">
+        {% include "footer-menu.twig" with {'items': footer_menu.get_items} %}
+      </div>
       <div class="col ms-auto social-list-block">
         <ul class="social-list d-flex justify-content-end">
           <li class="social-list-item">
@@ -17,7 +20,7 @@
           </li>
           <li class="social-list-item">
             <a href="https://twitter.com/eirencaffall" target="_blank" class="social-list-item-link" rel="external" title="twitter link">
-              <i class="fa fa-twitter"></i>
+              <i class="fa-brands fa-x-twitter"></i>
             </a>
           </li>
           <li class="social-list-item">

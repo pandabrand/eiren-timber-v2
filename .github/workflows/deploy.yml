@@ -37,4 +37,4 @@ jobs:
             dest: '${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:/home/dh_kkxxmh/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2'
         
         - name: Display status from deploy
-          run: echo "${{ steps.deploy.outputs.status }}"
+          run: echo "{name}={value}" >> $GITHUB_OUTPUT

@@ -35,7 +35,8 @@ jobs:
           uses: shimataro/ssh-key-action@v2
           with:
             key: ${{ secrets.SSH_PRIVATE_KEY }}
-            known_hosts: ~/.ssh/known_hosts
+            name: github-actions
+            known_hosts: unneccessary
 
         - name: Deploy to server with rsync
           run: rsync -avz --exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' /. ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:/home/dh_kkxxmh/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2

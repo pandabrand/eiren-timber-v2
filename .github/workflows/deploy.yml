@@ -26,10 +26,10 @@ jobs:
         - name: Build
           run: yarn production
 
-        -name: Adding Known Hosts
-         run: |
+        - name: Adding Known Hosts
+          run: |
             mkdir -p ~/.ssh/
-            ssh-keyscan ${{ secrets.SFTP_URL }} >> ~/.ssh/known_hosts
+            ssh-keyscan -H ${{ secrets.SFTP_URL }} >> ~/.ssh/known_hosts
 
         - name: Install SSH KEY
           uses: shimataro/ssh-key-action@v2

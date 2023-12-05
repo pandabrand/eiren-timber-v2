@@ -39,7 +39,7 @@ jobs:
             known_hosts: unneccessary
 
         - name: Deploy to server with rsync
-          run: rsync -avz --exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' /. ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:/home/dh_kkxxmh/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2
+          run: rsync -avz --exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' ./* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:/home/dh_kkxxmh/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2
         
         - name: Display status from deploy
           run: echo "{name}={value}" >> $GITHUB_OUTPUT

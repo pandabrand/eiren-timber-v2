@@ -1,0 +1,40 @@
+name: Theme Build and Deploy
+
+on:
+    push:
+        branches:
+            - 'prod'
+    pull_request:
+        types:
+            - 'closed'
+        paths-ignore:
+            - 'README.md'
+            - 'wordpress/**'
+jobs:
+    deploy_job:
+        runs-on: ubuntu-latest
+        name: build and deploy
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Install Dependencies
+          run: yarn
+
+        - name: Build
+          run: yarn production
+
+        - name: Deploy to server
+          id: deploy
+          uses: Pendect/action-rsyncer@v1.1.0
+          env:
+            DEPLOY_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+          with:
+            flags: '-avzr --delete'
+            options: "--exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes'"
+            ssh_options: ''
+            src: './*'
+            dest: '${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:/home/dh_kkxxmh/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2'
+        
+        - name: Display status from deploy
+          run: echo "${{ steps.deploy.outputs.status }}"

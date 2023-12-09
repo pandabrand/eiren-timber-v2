@@ -22,6 +22,6 @@
     "watch-poll": "mix watch -- --watch-options-poll=1000",
     "hot": "mix watch --hot",
     "production": "mix --production",
-    "deploy-production": "yarn production && rsync -avz --exclude 'wordpress' --exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' ./* dh_b6u5nk@signature.dreamhost.com:~/eirencaffall.com/wp-content/themes/eiren-timber-v2",
+    "deploy-production": "yarn production && rsync -avz --exclude wordpress --exclude node_modules --exclude .github --exclude .gitignore --exclude .gitattributes ./* dh_b6u5nk@signature.dreamhost.com:~/eirencaffall.com/wp-content/themes/eiren-timber-v2"
   }
 }

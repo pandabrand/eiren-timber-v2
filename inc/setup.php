@@ -49,6 +49,7 @@ add_action('after_setup_theme', function () {
      */
     add_image_size( 'eiren-news_thumbnail', 180, 240 );
     add_image_size( 'eiren-music_thumbnail', 600, 600, true );
+    add_image_size( 'eiren-large_square', 768, 768 );
 
 }, 20);
 
@@ -71,3 +72,13 @@ add_action('widgets_init', function () {
         'id'            => 'sidebar-footer'
     ] + $config);
 });
+
+add_filter( 'image_size_names_choose', 'my_custom_sizes' );
+ 
+function my_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'eiren-news_thumbnail' => __( 'News Thumbnail' ),
+        'eiren-music_thumbnail' => __( 'Music Thumbnail' ),
+        'eiren-large_square' => __( 'Large Square' ),
+    ) );
+}

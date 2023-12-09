@@ -1,9 +1,13 @@
 name: Theme Build and Deploy
 
 on:
+    push:
+        branches: [
+          dev
+        ]
     pull_request:
         branches: [
-          prod
+          dev
         ]
         paths-ignore:
             - 'README.md'
@@ -25,16 +29,16 @@ jobs:
         - name: Adding Known Hosts
           run: |
             mkdir -p ~/.ssh/
-            ssh-keyscan -H ${{ secrets.PROD_SFTP_URL }} >> ~/.ssh/known_hosts
+            ssh-keyscan -H ${{ secrets.SFTP_URL }} >> ~/.ssh/known_hosts
 
         - name: Install SSH KEY
           uses: shimataro/ssh-key-action@v2
           with:
-            key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
             known_hosts: 'unneccessary'
 
         - name: Deploy to server with rsync
-          run: rsync -avz --exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' ./* ${{ secrets.PROD_SFTP_USER }}@${{ secrets.PROD_SFTP_URL }}:~/eirencaffall.com/wp-content/themes/eiren-timber-v2
+          run: rsync -avz --exclude 'node_modules' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' ./* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_URL }}:~/eiren.pandabrand.net/wp-content/themes/eiren-timber-v2
         
         - name: Display status from deploy
           run: echo "{name}={value}" >> $GITHUB_OUTPUT
